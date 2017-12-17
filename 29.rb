@@ -1,4 +1,3 @@
-# http://euler.jakumo.org/problems/view/29.html | https://projecteuler.net/problem=29
 # № 29 — Различные степени.
 # Рассмотрим все целочисленные комбинации a^b для 2 <= a <= 5 и 2 <= b <= 5:
 #
