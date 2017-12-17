@@ -4,8 +4,8 @@
 
 ## Задачи
 
-* [projecteuler.net](https://projecteuler.net/) - Сайт проекта, где можно выбрать задачу и проверить правильность ответа.
-* [euler.jakumo.org](http://euler.jakumo.org/) - Перевод текста задач на русский язык.
+* [projecteuler.net](https://projecteuler.net/) — Сайт проекта, где можно выбрать задачу и проверить правильность ответа.
+* [euler.jakumo.org](http://euler.jakumo.org/) — Перевод текста задач на русский язык.
 
 ## Правило «одной минуты»
 
