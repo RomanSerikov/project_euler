@@ -19,7 +19,7 @@ pow    = 2..100
 result = []
 
 base.each do |a|
-  pow.each { |b| result << a ** b } 
+  pow.each { |b| result << a**b } 
 end
 
 puts result.uniq.size
