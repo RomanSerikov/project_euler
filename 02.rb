@@ -14,7 +14,7 @@ def fib_generator(lim)
 
   fib_numbers = [fib_prev, fib_current]
 
-  while (fib_current < lim) do
+  while fib_current < lim
     fib_current, fib_prev = (fib_prev + fib_current), fib_current
     fib_numbers << fib_current
   end
@@ -31,7 +31,6 @@ def get_even_from(arr)
 
   even_numbers
 end
-
 
 fib_numbers      = fib_generator(limit)
 even_fib_numbers = get_even_from(fib_numbers)
