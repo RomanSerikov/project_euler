@@ -20,7 +20,7 @@ magic_numbers = []
 puts "The numbers are:"
 
 range.each do |number|
-  if ( number.to_s.each_char.reduce(0) { |sum, char| sum + (char.to_i ** 5) } ) == number
+  if (number.to_s.each_char.reduce(0) { |sum, char| sum + (char.to_i**5) }) == number
     puts number
     magic_numbers << number
   end
