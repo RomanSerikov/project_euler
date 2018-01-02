@@ -8,10 +8,7 @@
 require 'prime'
 
 permutations = (1..7).to_a.permutation.map(&:join)
-permutations.delete_if { |p| p.to_s[-1].match /[024568]/ }
-
-while !( Prime.prime?(permutations.max.to_i) ) do
-  permutations.delete(permutations.max)
-end
+permutations.delete_if { |p| p.to_s[-1].match(/[2456]/) }
+permutations.delete(permutations.max) until Prime.prime?(permutations.max.to_i)
 
 puts "Max: #{permutations.max}"
