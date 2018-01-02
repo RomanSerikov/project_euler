@@ -13,10 +13,10 @@ def palindrome?(string)
 end
 
 range = (1..1_000_000)
-palArray = []
+pal_array = []
 
 range.each do |num|
-  palArray << num if palindrome?(num.to_s) && palindrome?( num.to_s(2) )
+  pal_array << num if palindrome?(num.to_s) && palindrome?(num.to_s(2))
 end
 
-puts "Sum: #{palArray.reduce(:+)}"
+puts "Sum: #{pal_array.reduce(:+)}"
