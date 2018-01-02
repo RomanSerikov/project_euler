@@ -19,9 +19,9 @@ def string_to_num(string)
   string.sum - string.size * 96
 end
 
-def isTriangle?(n)
-  ( 1 - Math.sqrt(8 * n + 1) ) % 2 == 0
+def triangle?(n)
+  (1 - Math.sqrt(8 * n + 1)).even?
 end
 
-words = IO.read('p042_words.txt').split(",").map{ |word| word[1..-2].downcase }
-puts words.select { |word| isTriangle?( string_to_num(word) ) }.size
+words = IO.read('p042_words.txt').split(",").map { |word| word[1..-2].downcase }
+puts words.select { |word| triangle?(string_to_num(word)) }.size
