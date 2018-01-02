@@ -18,25 +18,22 @@
 
 numbers  = (1..10_000)
 factors  = (1..9)
-resArray = []
+res_array = []
 
 numbers.each do |num|
   result = ""
 
   factors.each do |f|
     break if result.include?('0')
+    break if "#{result}#{num * f}".length > 9
 
-    if "#{result}#{num * f}".length > 9
-      break
-    else
-      result << "#{num * f}"
-    end
+    result << (num * f).to_s
   end
 
   next if result.size != 9
   next if result.include?('0')
 
-  resArray << result unless result.split('').size > result.split('').uniq.size
+  res_array << result unless result.split('').size > result.split('').uniq.size
 end
 
-puts resArray.max
+puts res_array.max
