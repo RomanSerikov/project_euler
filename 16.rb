@@ -3,4 +3,6 @@
 
 # Какова сумма цифр числа 2^1000?
 
-puts (2 ** 1000).to_s.each_char.map(&:to_i).reduce(:+)
+sum = (2**1000).to_s.each_char.map(&:to_i).reduce(:+)
+
+puts "Sum of digits 2^1000: #{sum}"
