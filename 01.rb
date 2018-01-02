@@ -9,7 +9,7 @@ range = (3...limit)
 sum   = 0
 
 range.each do |i|
-  sum += i if (i % 3 == 0) || (i % 5 == 0)
+  sum += i if (i % 3).zero? || (i % 5).zero?
 end
 
 puts sum
