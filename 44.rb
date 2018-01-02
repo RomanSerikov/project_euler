@@ -15,8 +15,8 @@ def make_pentagon_number(n)
   n * (3 * n - 1) / 2
 end
 
-def isPentagon?(n)
-  ( 1 + Math.sqrt(24 * n + 1) ) % 6 == 0
+def pentagon?(n)
+  ((1 + Math.sqrt(24 * n + 1)) % 6).zero?
 end
 
 def find_pentagon
@@ -29,8 +29,8 @@ def find_pentagon
   pentagon_numbers.each do |a|
     pentagon_numbers.each do |b|
       next if a <= b
-      next unless isPentagon?(a - b)
-      next unless isPentagon?(a + b)
+      next unless pentagon?(a - b)
+      next unless pentagon?(a + b)
 
       return a - b
     end
