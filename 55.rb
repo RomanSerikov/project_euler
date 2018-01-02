@@ -33,14 +33,14 @@ require 'benchmark'
 
 limit = 10_000
 
-def isPalindrome?(n)
+def palindrome?(n)
   n.to_s == n.to_s.reverse
 end
 
-def isLychrel?(n)
+def lychrel?(n)
   50.times do
-    n = n + n.to_s.reverse.to_i
-    return false if isPalindrome?(n)
+    n += n.to_s.reverse.to_i
+    return false if palindrome?(n)
   end
 
   true
@@ -50,12 +50,11 @@ def count_lychrel(limit)
   counter = 0
 
   (1..limit).each do |n|
-    counter += 1 if isLychrel?(n)
+    counter += 1 if lychrel?(n)
   end
 
   counter
 end
 
 puts count_lychrel(limit)
-
 puts "Time: #{Benchmark.realtime { count_lychrel(limit) }.round(5)} seconds."
