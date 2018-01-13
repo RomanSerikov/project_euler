@@ -16,6 +16,6 @@ end
 
 names  = IO.read('p022_names.txt').split(",").map(&:downcase).sort
 points = names.map { |name| string_to_num(name.delete!("\"")) }
-points = points.map.with_index { |ps, i| ps * (i + 1) }
+sum    = points.map.with_index { |ps, i| ps * (i + 1) }.reduce(:+)
 
-puts "Name points sum are: #{points.reduce(:+)}"
+puts "Name points sum are: #{sum}"
