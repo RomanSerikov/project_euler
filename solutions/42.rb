@@ -20,8 +20,8 @@ def string_to_num(string)
 end
 
 def triangle?(n)
-  (1 - Math.sqrt(8 * n + 1)).even?
+  ((1 - Math.sqrt(8 * n + 1)) % 2).zero?
 end
 
-words = IO.read('p042_words.txt').split(",").map { |word| word[1..-2].downcase }
+words = IO.read('../files/p042_words.txt').split(",").map { |word| word[1..-2].downcase }
 puts words.select { |word| triangle?(string_to_num(word)) }.size

@@ -14,7 +14,7 @@ def string_to_num(string)
   string.sum - string.size * 96
 end
 
-names  = IO.read('p022_names.txt').split(",").map(&:downcase).sort
+names  = IO.read('../files/p022_names.txt').split(",").map(&:downcase).sort
 points = names.map { |name| string_to_num(name.delete!("\"")) }
 sum    = points.map.with_index { |ps, i| ps * (i + 1) }.reduce(:+)
 
