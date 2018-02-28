@@ -10,25 +10,21 @@
 
 require 'benchmark'
 
-def dividors(n)
-  (1..n / 2).select { |i| (n % i).zero? }
+def divisors(n)
+  2.upto(Math.sqrt(n)).select { |i| (n % i).zero? }.each_with_object([]) do |i, divisors|
+    divisors << i
+    divisors << n / i unless i == n / i
+  end
 end
 
-def friendly?(n)
-  d_n = dividors(n).reduce(:+)
-  b = dividors(d_n).reduce(:+)
-  b == n && d_n != n
+def friendly?(a)
+  b = divisors(a).reduce(1, :+)
+  a_test = divisors(b).reduce(1, :+)
+  a_test == a && a != b
 end
 
 def sum_friendly
-  range = (2...10_000)
-  nums = []
-
-  range.each do |i|
-    nums << i if friendly?(i)
-  end
-
-  nums.reduce(:+)
+  (2...10_000).select { |i| friendly?(i) }.reduce(:+)
 end
 
 puts sum_friendly
