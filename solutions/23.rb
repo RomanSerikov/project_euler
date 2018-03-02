@@ -17,39 +17,41 @@
 # Найдите сумму всех положительных чисел,
 # которые не могут быть записаны как сумма двух избыточных чисел.
 
+require 'benchmark'
+
 def divisors(n)
-  2.upto(Math.sqrt(n)).select { |i| (n % i).zero? }.each_with_object([]) do |i, divisors|
+  1.upto(Math.sqrt(n)).select { |i| (n % i).zero? }.each_with_object([]) do |i, divisors|
     divisors << i
-    divisors << n / i unless i == n / i
+    divisors << n / i if i != n / i && i != 1
   end
 end
 
 def abundant?(n)
-  divisors(n).reduce(1, :+) > n
+  divisors(n).reduce(:+) > n
 end
 
 def abundant(limit)
   (12...limit).select { |i| abundant?(i) }
 end
 
-def sum_non_abundant
-  n = 28_123
-  abd_nums = abundant(n)
-  abd_list = { sum: 0 }
-  
-  while abd_nums.count > 1
-    (0..abd_nums.count - 1).each do |i|
-      chk_num = abd_nums[0] + abd_nums[i]
-      next if abd_list[chk_num]
-      break if chk_num > n
-      abd_list[chk_num] = chk_num
-      abd_list[:sum] += chk_num
+def sum_abundant
+  abundant_numbers = abundant(28_123)
+  abundant_sums = []
+
+  abundant_numbers.each do |num1|
+    abundant_numbers.each do |num2|
+      sum = num1 + num2
+      break if sum > 28_123
+      abundant_sums << sum
     end
-    break if abd_nums[0] > n / 2
-    abd_nums.shift
   end
 
-  ((n * (n + 1)) / 2) - abd_list[:sum]
+  abundant_sums
+end
+
+def sum_non_abundant
+  ((1..28_123).to_a - sum_abundant).reduce(:+)
 end
 
 puts sum_non_abundant
+puts "Time: #{Benchmark.realtime { sum_non_abundant }.round(5)} seconds."
