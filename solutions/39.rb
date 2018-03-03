@@ -12,9 +12,8 @@ def largest_hash_key(hash)
   hash.max_by { |_k, v| v }
 end
 
-def find_p_with_max_solutions
-  max_perimeter = 1000
-
+def perimeter_with_max_solutions(limit)
+  max_perimeter = limit
   m_range = (1..23)
   n_range = (1..23)
   k_range = (1..max_perimeter)
@@ -35,10 +34,10 @@ def find_p_with_max_solutions
 
         a, b = b, a if a > b 
 
-        p = a + b + c
-        next if p > max_perimeter
+        perimeter = a + b + c
+        next if perimeter > max_perimeter
 
-        tr_hash["#{a}#{b}#{c}"] = p
+        tr_hash["#{a}#{b}#{c}"] = perimeter
       end 
     end
   end
@@ -48,5 +47,5 @@ def find_p_with_max_solutions
   largest_hash_key(res_hash)
 end
 
-puts "Answer: #{find_p_with_max_solutions}"
-puts "Time: #{Benchmark.realtime { find_p_with_max_solutions }.round(5)} seconds."
+puts "Answer: #{perimeter_with_max_solutions(1000)}"
+puts "Time: #{Benchmark.realtime { perimeter_with_max_solutions(1000) }.round(5)} seconds."
